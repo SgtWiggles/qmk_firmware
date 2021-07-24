@@ -59,7 +59,7 @@ typedef union {
  * "A musical tone is characterized by its duration, pitch, intensity (or loudness), and timbre (or quality)"
  */
 typedef struct {
-    uint16_t time_started;  // timestamp the tone/note was started, system time runs with 1ms resolution -> 16bit timer overflows every ~64 seconds, long enough under normal circumstances; but might be too soon for long-duration notes when the note_tempo is set to a very low value
+    uint32_t time_started;  // timestamp the tone/note was started, system time runs with 1ms resolution -> 16bit timer overflows every ~64 seconds, long enough under normal circumstances; but might be too soon for long-duration notes when the note_tempo is set to a very low value
     float    pitch;         // aka frequency, in Hz
     uint16_t duration;      // in ms, converted from the musical_notes.h unit which has 64parts to a beat, factoring in the current tempo in beats-per-minute
     // float intensity;    // aka volume [0,1] TODO: not used at the moment; pwm drivers can't handle it
@@ -147,6 +147,8 @@ void audio_stop_tone(float pitch);
  */
 void audio_play_melody(float (*np)[][2], uint16_t n_count, bool n_repeat);
 
+void audio_play_channel_melody(float (*np)[][2], uint16_t (*ends)[], uint16_t n_count);
+
 /**
  * @brief play a short tone of a specific frequency to emulate a 'click'
  *
@@ -210,9 +212,9 @@ void audio_decrease_tone_multiplexing_rate(uint16_t change);
 
 // Tempo functions
 
-void audio_set_tempo(uint8_t tempo);
-void audio_increase_tempo(uint8_t tempo_change);
-void audio_decrease_tempo(uint8_t tempo_change);
+void audio_set_tempo(uint16_t tempo);
+void audio_increase_tempo(uint16_t tempo_change);
+void audio_decrease_tempo(uint16_t tempo_change);
 
 // conversion macros, from 64parts-to-a-beat to milliseconds and back
 uint16_t audio_duration_to_ms(uint16_t duration_bpm);

@@ -30,18 +30,24 @@
 
 #undef MATRIX_ROW_PINS
 #undef MATRIX_COL_PINS
-#define MATRIX_ROW_PINS { A10, A9, A8, B15, C13, C14, C15, A2, A3, A6 }
-#define MATRIX_COL_PINS { B11, B10, B2, B1, A7, B0 }
+#define MATRIX_ROW_PINS \
+    { A10, A9, A8, B15, C13, C14, C15, A2, A3, A6 }
+#define MATRIX_COL_PINS \
+    { B11, B10, B2, B1, A7, B0 }
 #define UNUSED_PINS
 
-#define ENCODERS_PAD_A { B12 }
-#define ENCODERS_PAD_B { B13 }
+#define ENCODERS_PAD_A \
+    { B12 }
+#define ENCODERS_PAD_B \
+    { B13 }
 
-#define DIP_SWITCH_PINS { B14, A15, A0, B9 }
+#define DIP_SWITCH_PINS \
+    { B14, A15, A0, B9 }
 
 #define MUSIC_MAP
 #undef AUDIO_VOICES
 #undef AUDIO_PIN
+
 #define AUDIO_PIN A5
 #define AUDIO_PIN_ALT A4
 #define AUDIO_PIN_ALT_AS_NEGATIVE

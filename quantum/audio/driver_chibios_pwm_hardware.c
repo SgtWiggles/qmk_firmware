@@ -29,12 +29,15 @@ The hardware directly toggles the pin via its alternate function. see your MCUs 
 #include "ch.h"
 #include "hal.h"
 
+#include "print.h"
+
 #if !defined(AUDIO_PIN)
 #    error "Audio feature enabled, but no pin selected - see docs/feature_audio under the ARM PWM settings"
 #endif
 
 extern bool    playing_note;
 extern bool    playing_melody;
+extern bool    playing_channel_melody;
 extern uint8_t note_timbre;
 
 static PWMConfig pwmCFG = {
@@ -121,12 +124,14 @@ void audio_driver_start(void) {
     channel_1_stop();
     channel_1_start();
 
-    if (playing_note || playing_melody) {
+    if (playing_note || playing_melody || playing_channel_melody) {
+        print("audio driver started!");
         gptStartContinuous(&AUDIO_STATE_TIMER, 64);
     }
 }
 
 void audio_driver_stop(void) {
+    print("audio driver stopped!");
     channel_1_stop();
     gptStopTimer(&AUDIO_STATE_TIMER);
 }

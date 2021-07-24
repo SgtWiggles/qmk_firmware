@@ -22,9 +22,11 @@
 #endif
 
 #include "audio.h"
+#include "print.h"
 
 extern bool    playing_note;
 extern bool    playing_melody;
+extern bool    playing_channel_melody;
 extern uint8_t note_timbre;
 
 #define CPU_PRESCALER 8
@@ -257,6 +259,7 @@ void audio_driver_initialize() {
 }
 
 void audio_driver_stop() {
+    print("audio driver stopped\n");
 #ifdef AUDIO1_PIN_SET
     channel_1_stop();
 #endif
@@ -267,6 +270,7 @@ void audio_driver_stop() {
 }
 
 void audio_driver_start(void) {
+    print("audio driver started\n");
 #ifdef AUDIO1_PIN_SET
     channel_1_start();
     if (playing_note) {
@@ -291,7 +295,7 @@ ISR(AUDIO1_TIMERx_COMPy_vect) {
     isr_counter        = 0;
     bool state_changed = audio_update_state();
 
-    if (!playing_note && !playing_melody) {
+    if (!playing_note && !playing_melody && !playing_channel_melody) {
         channel_1_stop();
 #    ifdef AUDIO2_PIN_SET
         channel_2_stop();
@@ -320,7 +324,7 @@ ISR(AUDIO2_TIMERx_COMPy_vect) {
     isr_counter        = 0;
     bool state_changed = audio_update_state();
 
-    if (!playing_note && !playing_melody) {
+    if (!playing_note && !playing_melody && !playing_channel_melody) {
         channel_2_stop();
         return;
     }
