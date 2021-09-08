@@ -3860,11 +3860,11 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_QWERTY] = LAYOUT_preonic_grid(
-  KC_GRV,  KC_1, KC_2,    KC_3,    KC_4,  KC_5,   KC_6,   KC_7,  KC_8,    KC_9,    KC_0,    KC_BSPC,
-  KC_TAB,  KC_Q, KC_W,    KC_E,    KC_R,  KC_T,   KC_Y,   KC_U,  KC_I,    KC_O,    KC_P,    KC_QUOT,
-  KC_ESC,  KC_A, KC_S,    KC_D,    KC_F,  KC_G,   KC_H,   KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT,
-  KC_LSFT, KC_Z, KC_X,    KC_C,    KC_V,  KC_B,   KC_N,   KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-  KC_LCTL, FN,   KC_LALT, KC_LGUI, LOWER, KC_SPC, KC_SPC, RAISE, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+  KC_GRV,  KC_1, KC_2,       KC_3,      KC_4,  KC_5,   KC_6,   KC_7,  KC_8,    KC_9,    KC_0,    KC_BSPC,
+  KC_TAB,  KC_Q, KC_W,       KC_E,      KC_R,  KC_T,   KC_Y,   KC_U,  KC_I,    KC_O,    KC_P,    KC_QUOT,
+  KC_ESC,  KC_A, KC_S,       KC_D,      KC_F,  KC_G,   KC_H,   KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT,
+  KC_LSFT, KC_Z, KC_X,       KC_C,      KC_V,  KC_B,   KC_N,   KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+  KC_LCTL, FN,   KC_LALT,    KC_LGUI,   LOWER, KC_SPC, KC_SPC, RAISE, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
 [_LOWER] = LAYOUT_preonic_grid(
@@ -3872,7 +3872,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_EXLM, KC_PIPE, KC_AMPR, KC_EQL,  KC_PERC, KC_CIRC, KC_PLUS, KC_MINUS, KC_ASTR, _______, KC_DQUO,
   _______, KC_SLSH, KC_LABK, KC_LCBR, KC_LPRN, KC_LBRC, KC_RBRC, KC_RPRN, KC_RCBR,  KC_RABK, KC_BSLS, _______,
   _______, _______, _______, _______, _______, _______, _______, KC_UNDS, KC_COLN,  _______, KC_PIPE, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______
+  _______, _______, _______, _______, _______, KC_BSPC, KC_BSPC, _______, _______,  _______, _______, _______
 ),
 
 [_RAISE] = LAYOUT_preonic_grid(
@@ -3880,7 +3880,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, KC_F11,  KC_F12,  KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_MPLY, _______,
   _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, KC_PENT,
   _______, KC_PSLS, KC_PAST, KC_PMNS, KC_PPLS, _______, _______, _______, KC_MUTE, _______, _______, _______,
-  _______, FN,      _______, _______, _______, _______, _______, _______, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT
+  _______, FN,      _______, _______, _______, KC_DEL , KC_DEL , _______, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT
 ),
 
 
