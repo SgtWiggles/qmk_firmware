@@ -1,3 +1,5 @@
 MOUSEKEY_ENABLE = no
 TAP_DANCE_ENABLE = yes
 BOOTMAGIC_ENABLE = lite     # Enable Bootmagic Lite
+RGB_MATRIX_ENABLE = yes
+RGB_MATRIX_CUSTOM_USER = yes
