@@ -742,6 +742,7 @@ MUSICAL_NOTE(_D6, 227),
 
 enum preonic_layers {
   _QWERTY,
+  _MAPLE_RS,
   _LOWER,
   _RAISE,
   _FN,
@@ -750,6 +751,7 @@ enum preonic_layers {
 
 enum preonic_keycodes {
   QWERTY = SAFE_RANGE,
+  MAPLE_RS,
   LOWER,
   RAISE,
   BACKLIT,
@@ -3860,11 +3862,19 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_QWERTY] = LAYOUT_preonic_grid(
-  KC_GRV,  KC_1, KC_2,       KC_3,      KC_4,  KC_5,   KC_6,   KC_7,  KC_8,    KC_9,    KC_0,    KC_BSPC,
+  KC_GRV,  KC_1, KC_2,       KC_3,      KC_4,  KC_5,   KC_6,   KC_7,  KC_8,    KC_9,    KC_0,    C(A(KC_LEFT)),
   KC_TAB,  KC_Q, KC_W,       KC_E,      KC_R,  KC_T,   KC_Y,   KC_U,  KC_I,    KC_O,    KC_P,    KC_QUOT,
   KC_ESC,  KC_A, KC_S,       KC_D,      KC_F,  KC_G,   KC_H,   KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT,
   KC_LSFT, KC_Z, KC_X,       KC_C,      KC_V,  KC_B,   KC_N,   KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   KC_LCTL, FN,   KC_LALT,    KC_LGUI,   LOWER, KC_SPC, KC_SPC, RAISE, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+),
+
+[_MAPLE_RS] = LAYOUT_preonic_grid(
+  KC_GRV,  KC_1, KC_2,       KC_3,      KC_4,  KC_5,   KC_6,   KC_7,  KC_8,    KC_9,    KC_0,     KC_BSPC,
+  KC_TAB,  KC_Q, KC_W,       KC_E,      KC_R,  KC_T,   KC_Y,   KC_U,  KC_I,    KC_UP,   KC_P,     KC_QUOT,
+  KC_ESC,  KC_A, KC_S,       KC_D,      KC_F,  KC_G,   KC_H,   KC_J,  KC_LEFT, KC_DOWN, KC_RIGHT, KC_ENT,
+  KC_LSFT, KC_Z, KC_X,       KC_C,      KC_V,  KC_B,   KC_N,   KC_M,  KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
+  KC_LCTL, FN,   KC_LALT,    KC_LGUI,   LOWER, KC_SPC, KC_SPC, RAISE, KC_LEFT, KC_DOWN, KC_UP,    KC_RGHT
 ),
 
 [_LOWER] = LAYOUT_preonic_grid(
@@ -3885,18 +3895,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [_FN] = LAYOUT_preonic_grid(
-  _______, KC_F1,  KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  SHUT_UP_BUTTON,
-  _______, KC_F11, KC_F12,  KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_MPLY, CEG_BUTTON,
-  _______, KC_INS, KC_HOME, KC_PSCR, _______, _______, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, _______, SNOW_HALA_BUTTON,
-  _______, KC_DEL, KC_END,  _______, _______, _______, _______, KC_MUTE, KC_PGUP, KC_PGDN, _______, _______,
-  _______, FN,     _______, _______, _______, _______, _______, FF_PRELUDE_BUTTON, ALL_STAR_BUTTON, RICK_BUTTON, PLATINUM_BUTTON, RENAI_BUTTON
+  KC_F11 ,   KC_F1,   KC_F2,    KC_F3,   KC_F4,   KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,   KC_F10,  KC_F12,
+  _______, _______, _______,  _______, _______, _______,  _______,  _______,  _______,  _______,  _______, _______,
+  _______, _______, _______,  _______, _______, _______,  _______,  _______,  _______,  _______,  _______, _______,
+  _______, _______, _______,  _______, _______, _______,  _______,  _______,  _______,  _______,  _______, _______,
+  _______,      FN, _______,  _______, _______, _______,  _______,  _______,  _______,  _______,  _______, _______
 ),
 
 [_ADJUST] = LAYOUT_preonic_grid(
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  KC_F11,  KC_F12,
   _______, RESET,   DEBUG,   _______, _______, _______, _______, TERM_ON, TERM_OFF, BL_TOGG, RGB_TOG, KC_DEL,
-  _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  BACKLIT , _______, _______, _______,
-  _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______,  _______, _______, _______,
+  _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  MAPLE_RS, _______, _______, _______,
+  _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  BACKLIT, _______,  _______, _______, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______
 )
 };
@@ -3907,6 +3917,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case QWERTY:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_QWERTY);
+            }
+            return false;
+            break;
+        case MAPLE_RS:
+            if (record->event.pressed) {
+                set_single_persistent_default_layer(_MAPLE_RS);
             }
             return false;
             break;
